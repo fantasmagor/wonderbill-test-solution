@@ -40,6 +40,10 @@ In case of any problems please contact me at [arek.jablonski@gmail.com](mailto:a
 
 ---
 
+## Why this stack
+I normally don't work with Express (the last I used it was 4 years ago) and Bull queues. In a real life I would prefer to go with AWS services and utilise AWS ApiGateway, AWS Lambda, AWS SQS (or SNS) everything with or without Serverless framework. Although, in this particular case that approach would be a bit of over engineering and harder to run/evaluate.
+
+---
 ###Have a fun and all the best!
 
 Arkadiusz Jablonski
