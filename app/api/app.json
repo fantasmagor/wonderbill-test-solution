@@ -1,0 +1,7 @@
+{
+  "apps": [{
+    "name": "WonderBillApi",
+    "script": "api/src/app.js",
+    "watch": ["api/src"]
+  }]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "wonderbill-consumer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "loglevel": "^1.7.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@wonderbill/queue",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bull": "^3.20.1"
+  },
+  "author": "Arkadiusz Jablonski",
+  "license": "UNLICENSED",
+  "private": true
+}

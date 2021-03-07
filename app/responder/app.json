@@ -1,0 +1,7 @@
+{
+  "apps": [{
+    "name": "WonderBillConsumer",
+    "script": "responder/src/app.js",
+    "watch": ["responder/src"]
+  }]
+}

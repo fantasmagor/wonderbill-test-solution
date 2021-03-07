@@ -1,0 +1,16 @@
+{
+  "name": "wonderbill-api",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "description": "",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "express": "~4.16.1",
+    "loglevel": "^1.7.1",
+    "node-uuid": "^1.4.8",
+    "valid-url": "^1.0.9"
+  }
+}

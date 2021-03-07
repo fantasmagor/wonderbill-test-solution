@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  redis:
+    image: bitnami/redis:latest
+##  a proper paths should be used to achieve a data persistence
+#    volumes:
+#      - /redis/data:/bitnami/redis/data
+    ports:
+      - 6379:6379
+    environment:
+## NOT FOR PRODUCTION !!! (but this is only a job test ;)
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  api:
+    build:
+      context: ./app
+      dockerfile: api/Dockerfile
+    environment:
+      LISTENING_PORT: 3001
+      REDIS_URL: 'redis://redis:6379'
+    ports:
+      - 3001:3001
+    volumes:
+      - ./app/api/src:/app/api/src
+      - ./app/lib:/app/lib
+    working_dir: /app
+    depends_on:
+      - redis
+    command: pm2-runtime api/app.json
+
+  consumer:
+    build:
+      context: ./app
+      dockerfile: consumer/Dockerfile
+    environment:
+      REDIS_URL: 'redis://localhost:6379'
+      PROVIDER_URL: 'http://localhost:3000'
+    volumes:
+      - ./app/consumer/src:/app/consumer/src
+      - ./app/lib:/app/lib
+    working_dir: /app
+## host mode is used to allow an access to host's 127.0.0.1
+    network_mode: host
+    depends_on:
+      - redis
+    command: pm2-runtime consumer/app.json
+
+  responder:
+    build:
+      context: ./app
+      dockerfile: responder/Dockerfile
+    environment:
+      REDIS_URL: 'redis://localhost:6379'
+    volumes:
+      - ./app/responder/src:/app/responder/src
+      - ./app/lib:/app/lib
+    working_dir: /app
+## host mode is used to allow an access to host's 127.0.0.1
+    network_mode: host
+    depends_on:
+      - redis
+    command: pm2-runtime responder/app.json
